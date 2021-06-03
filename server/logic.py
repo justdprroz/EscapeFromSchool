@@ -2,33 +2,27 @@ import json
 
 class plotDriver:
 	def loadPlotFromJSON(self):
-		with open("plot.json", "r") as plotFile:
+		with open("../plot.json", "r") as plotFile:
 			self.plot = json.load(plotFile)
 
-	def __init__(self, i):
+	def __init__(self):
 		self.plot = None
 		self.loadPlotFromJSON()
 		self.isEnded = False
 
 	def doTurn(self, index):
-		if self.isEnded:
+		variants = list(self.plot[1].keys())
+		if (index < 0 or index > (len(variants) - 1)):
 			return 0
-		variants = list(self.plot.keys())
-		if (index < 0 or index > len(variants)):
-			return 0
-		self.currentNode = self.plot[variants[index]]
-		if isinstance(self.plot, str):
+		self.plot = self.plot[1][variants[index]]
+		if self.plot == dict():
 			self.isEnded = True
-			return 1
-		if isinstance(self.plot, dict):
-			return 1
+		return 1
 
-	def getText(seld):
-		pass
+	def getText(self):
+		text = plot[0]
+		return text
 
 	def getVariants(self):
-		if not self.isEnded:
-			variants = list(self.plot.keys())
-		if self.isEnded:
-			variants = self.plot
+		variants = list(self.plot.keys())
 		return variants
