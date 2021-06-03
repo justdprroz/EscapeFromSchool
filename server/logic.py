@@ -4,8 +4,8 @@ class plotDriver:
 	def loadPlotFromJSON(self):
 		with open("plot.json", "r") as plotFile:
 			self.plot = json.load(plotFile)
-			
-	def __init__(self):
+
+	def __init__(self, i):
 		self.plot = None
 		self.loadPlotFromJSON()
 		self.isEnded = False
@@ -23,7 +23,10 @@ class plotDriver:
 		if isinstance(self.plot, dict):
 			return 1
 
-	def getVariant(self):
+	def getText(seld):
+		pass
+
+	def getVariants(self):
 		if not self.isEnded:
 			variants = list(self.plot.keys())
 		if self.isEnded:
